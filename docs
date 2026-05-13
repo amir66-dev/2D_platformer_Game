@@ -1,0 +1,17 @@
+
+---
+
+## 2. Portfolio Project Description
+
+You can use this on your personal website, LinkedIn, or resume project section:
+
+```markdown
+### 2D Platformer Game Fixes and Asset Loading Improvements
+
+Contributed final code fixes to a Python/Pygame 2D platformer game originally developed by Edward Albert Jaros. The game features a side-scrolling graphical environment, soundtrack, character movement, obstacles, traps, and platform-based navigation.
+
+My contributions focused on improving the reliability of the codebase by fixing asset-loading logic, improving file-path handling, and updating sprite-name normalization. I improved the `find_game_file()` function so the game could locate music, sound effects, sprites, and other assets across multiple folder layouts. I also updated the `clean_sprite_name()` function to correctly detect `double_jump` animations before generic `jump` animations, preventing incorrect animation mapping.
+
+This project strengthened my experience working with an existing codebase, debugging Python logic, handling file-system paths, using regular expressions, and collaborating with another developer while maintaining proper authorship and attribution.
+
+Attribution: Original game developed by Edward Albert Jaros. Final fixes contributed by Amir Edalati. Used with permission.
