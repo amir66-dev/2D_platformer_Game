@@ -1,0 +1,87 @@
+# 2D Platformer Game Fixes and Asset Loading Improvements
+
+## Project Overview
+
+This repository showcases selected code contributions I made to a 2D platformer-style game originally developed by **Edward Albert Jaros**.
+
+The game is a Mario-inspired 2D side-scrolling platformer built with **Python** and **Pygame**. It includes a graphical environment, soundtrack, character movement, obstacles, traps, and platform-based navigation where the player must move through the level while avoiding hazards.
+
+My role was focused on final code corrections, safer asset loading, sprite-name normalization, and improving how the game locates files and folders across different project layouts.
+
+---
+
+## Attribution and Permission
+
+**Original game developed by Edward Albert Jaros. Final fixes contributed by Amir Edalati. Used with permission.**
+
+The original developer retains ownership of the full game code and design. This repository only includes selected portions of the code that I contributed or updated, with permission, for portfolio purposes.
+
+The full game is not presented as my own work.
+
+---
+
+## My Contributions
+
+My main contributions focused on improving reliability, maintainability, and asset-loading behavior in the game.
+
+### Key Fixes
+
+- Improved `find_game_file()` so the game can locate files across multiple possible folder layouts.
+- Updated `clean_sprite_name()` to correctly detect `double_jump` before `jump`.
+- Added logic for handling different asset naming patterns.
+- Improved sprite animation key normalization.
+- Added safer file and folder lookup behavior.
+- Helped prevent missing assets from crashing the game.
+- Improved compatibility when the game file is placed in different project directories.
+
+---
+
+## Technical Skills Demonstrated
+
+This project demonstrates my ability to:
+
+- Debug Python game logic
+- Work with an existing codebase
+- Improve file-path handling
+- Build safer asset-loading utilities
+- Use regular expressions for data/string normalization
+- Work with Pygame assets, sprites, sounds, and animations
+- Collaborate on a software project with proper attribution
+- Document technical contributions clearly and ethically
+
+---
+
+## Technologies Used
+
+- Python
+- Pygame
+- Regular Expressions
+- File System Utilities
+- 2D Game Development
+- Audio and Sprite Asset Loading
+
+---
+
+## Code Contribution Highlights
+
+### Robust File Lookup
+
+The `find_game_file()` function checks multiple possible file locations and returns the first valid path. This helps the game run even when assets are stored in different folders such as the project root, `assets/`, `assets/Music/`, or `assets/Sounds/`.
+
+```python
+def find_game_file(*candidate_paths):
+    """Return the first existing file from several possible relative paths."""
+    for rel_path in candidate_paths:
+        if not rel_path:
+            continue
+
+        if os.path.isabs(rel_path) and os.path.isfile(rel_path):
+            return rel_path
+
+        normalized = rel_path.replace("\\", "/")
+        path = asset_path(*normalized.split("/"))
+
+        if os.path.isfile(path):
+            return path
+
+    return None
